@@ -1,0 +1,46 @@
+MODELS REQUIRING RETRAINING
+===========================
+
+Based on testing all combinations, these models have quality issues:
+
+HIGH PRIORITY (Broken/Unusable):
+---------------------------------
+1. Warframe - ARIMA
+   Issue: File corrupted (EOFError when loading)
+   Path: models_arima/Warframe/best_arima_model.pkl
+   Action: Delete file and retrain from scratch
+   
+2. Dota 2 - ARIMAX
+   Issue: Returns all zeros for all horizons
+   Path: models_arimax/Dota_2/
+   Sample output: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+   Action: Retrain with:
+     - Check exogenous variables are being used correctly
+     - Try different ARIMAX orders
+     - Verify training data has non-zero variance
+
+3. Dota 2 - GRU
+   Issue: Returns constant value for all horizons
+   Path: models_gru/Dota_2/
+   Sample output: [661541.0, 661541.0, 661541.0, 661541.0, 661541.0, 661541.0]
+   Action: Retrain with:
+     - Lower learning rate (e.g., 0.0001 instead of 0.001)
+     - More epochs (100-200)
+     - Add dropout (0.2-0.3)
+     - Try different sequence lengths (12, 24, 48 hours)
+     - Ensure time features are varying in training
+
+MEDIUM PRIORITY (Poor Quality):
+--------------------------------
+4. Grand Theft Auto V - ARIMA
+   Issue: Very low variance in multi-step forecasts (3-48 hours)
+   Path: models_arima/Grand_Theft_Auto_V/
+   Action: Retrain with different (p,d,q) orders
+
+RECOMMENDATION:
+---------------
+Focus on retraining #1, #2, #3 first as they are completely unusable.
+#4 still produces forecasts, just not very dynamic ones.
+
+All other model+game combinations are working correctly and producing
+varying forecasts across different horizons.
