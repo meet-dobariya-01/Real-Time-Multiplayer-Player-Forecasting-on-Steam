@@ -1,0 +1,140 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# =========================
+# Virtual Environment
+# =========================
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# PyCharm
+# =========================
+.idea/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+
+# =========================
+# Environment Variables
+# =========================
+.env
+
+# =========================
+# Model Files (large binaries)
+# =========================
+# Models are needed for deployment - using Git LFS
+# *.pkl
+# *.joblib
+# *.h5
+# *.pt
+# *.pth
+# *.keras
+
+# =========================
+# Data Files (large)
+# =========================
+data/raw/
+data/interim/
+
+# CSV files are needed for deployment, but we only want to track the compressed versions (.gz)
+*.csv
+# Explicitly allow compressed CSVs
+!*.csv.gz
+
+# Keep sample datasets if needed
+!data/sample.csv
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Build Files
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Cache
+# =========================
+.cache/
+.pytest_cache/
+
+# =========================
+# TensorBoard
+# =========================
+runs/
+
+# =========================
+# Misc / Temp
+# =========================
+temp/
+tmp/
+.cph/
+
+# =========================
+# Debug / Scratch scripts
+# =========================
+check_features.py
+debug_lookup.py
+find_lstm_feat.py
+tmp_repro.py
+verify_lookup.py
+test_fix.bat
+test_fix.py
+test_inference.py
+rewrite_utils.py
+best_ar_models.json
+lstm_avail.txt
+lstm_cell.txt
+eda_summary.txt
+
+# =========================
+# Jupyter notebooks in model dirs
+# =========================
+models_*/check.ipynb
+
+# =========================
+# Ignore massive Statsmodels Directories (>45GB total!)
+# These exceed GitHub's 2GB file limit and 1GB free tier limit.
+# We will only deploy the lightweight, modern models (XGBoost, LightGBM, LSTM, GRU)
+# =========================
+models_sarima/
+models_sarimax/
+models_ma/
+models_arma/
+models_arima/
+
+# =========================
+# Generated plots (large PNGs)
+# =========================
+plots_*/

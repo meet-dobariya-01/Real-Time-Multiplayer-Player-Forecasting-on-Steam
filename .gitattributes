@@ -1,0 +1,13 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+# Keep text files as text
+*.py text
+*.md text
+*.txt text
+*.json filter=lfs diff=lfs merge=lfs -text
+*.toml text
+*.css text
+Data_sets/*.csv filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
+*.joblib filter=lfs diff=lfs merge=lfs -text
+*.keras filter=lfs diff=lfs merge=lfs -text
